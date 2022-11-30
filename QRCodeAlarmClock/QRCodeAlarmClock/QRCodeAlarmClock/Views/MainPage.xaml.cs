@@ -68,14 +68,70 @@ namespace QRCodeAlarmClock
             {
                 alarmView = new EditAlarmView();
                 alarmView.Closed += AlarmViewClosed;
+                alarmView.StartedClosing += AlarmViewStartedClosing;
                 MainView.Children.Add(alarmView);
+
+                ShrinkAlarmListFrame();
             }
+        }
+
+        private void ShrinkAlarmListFrame()
+        {
+            int horizontalThickness = 20;
+            int verticalThickness = 40;
+
+            Animation shrinkAlarmListFrameH = new Animation(v => {
+
+                double verticalMargin = AlarmListFrame.Margin.VerticalThickness;
+                AlarmListFrame.Margin = new Thickness(v, v * 2);
+
+            }, 0, horizontalThickness);
+            shrinkAlarmListFrameH.Commit(this, "shrinkAlarmListFrameH", 4, 400, Easing.CubicInOut);
+        }
+
+        private void AlarmViewStartedClosing()
+        {
+            FlashMainView();
+            GrowAlarmListFrame();
+        }
+
+
+        private void FlashMainView()
+        {
+            ForegroundFlashFrame.Margin = new Thickness(100);
+            ForegroundFlashFrame.CornerRadius = 40;
+            ForegroundFlashFrame.Opacity = 0;
+
+            Animation flashGrow = new Animation(v => ForegroundFlashFrame.Margin = new Thickness(v), 100, 0);
+            flashGrow.Commit(this, "flashGrow", 4, 500, Easing.SinOut);
+
+            Animation flashDown = new Animation(v => ForegroundFlashFrame.Opacity = v, 0.6, 0);
+            flashDown.Commit(this, "flashDown", 4, 500, Easing.SinOut);
+
+            Animation flashCorners = new Animation(v => ForegroundFlashFrame.CornerRadius = (float)v, 40, 0);
+            flashDown.Commit(this, "flashCorners", 4, 500, Easing.SinOut);
+        }
+
+        private void GrowAlarmListFrame()
+        {
+            int horizontalThickness = 20;
+            int verticalThickness = 40;
+
+            Animation growAlarmListFrameH = new Animation(v => {
+
+                AlarmListFrame.Margin = new Thickness(v, verticalThickness - (horizontalThickness-v)*2);
+
+            }, horizontalThickness, 0);
+            growAlarmListFrameH.Commit(this, "growAlarmListFrameH", 4, 400, Easing.CubicInOut);
         }
 
         private void AlarmViewClosed()
         {
-            MainView.Children.Remove(alarmView);
-            alarmView = null;
+            if(alarmView != null)
+            {
+                MainView.Children.Remove(alarmView);
+                alarmView = null;
+            }       
         }
 
         private Switch CreateAlarmSwitch(Alarm alarm)
