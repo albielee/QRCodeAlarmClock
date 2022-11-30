@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "K3kQuiyNkl/uSq1eNKdV0cuUefbY8QguNpO/VRMTgTAMQrqB3gfc1j4iBTj7vkaV+p5hfDbtSTvmkvQdPJS4WQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Alberto Lee\\Documents\\Repos\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock.iOS\\QRCodeAlarmClock.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}

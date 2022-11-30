@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QRCodeAlarmClock.ViewModels"
+             x:Class="QRCodeAlarmClock.Views.EditAlarmView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <vm:EditAlarmViewVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+  <ContentView.Content>
+        <Grid>
+            <Button Pressed="DeselectButton_Pressed"/>
+
+            <Frame CornerRadius="20"
+               x:Name="editorViewFrame"
+               BackgroundColor="{StaticResource DarkGrey}">
+                <StackLayout 
+                   x:Name="editorViewStack">
+                    <ScrollView HeightRequest="100"
+                                x:Name="FrameScrollAwayView"
+                                Scrolled="FrameScrollAwayView_Scrolled">
+                        <StackLayout>
+                            <Label Text=" "
+                               Margin="20"/>
+                            <Label Text=" "
+                               Margin="20"/>
+                            <Label Text=" "
+                               Margin="20"/>
+                            <Label Text=" "
+                               Margin="20"/>
+                            <Label Text=" "
+                               Margin="20"/>
+                        </StackLayout>
+                    </ScrollView>
+                    <Label Text="Hi hi hi"/>
+
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRCodeAlarmClock.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Background">#000000</Color>
+            <Color x:Key="TextDefault">#FFFFFF</Color>
+            <Color x:Key="TextGrey">#777777</Color>
+            <Color x:Key="Red">#FF0000</Color>
+            <Color x:Key="Grey">#777777</Color>
+            <Color x:Key="DarkGrey">#444444</Color>
+            <Color x:Key="AlarmItemBackground">#000000</Color>
+            <Color x:Key="Transparent">#00000000</Color>
+
+            <Style x:Key="normal" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{StaticResource TextDefault}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="alarmNormal" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{StaticResource TextGrey}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="title" TargetType="Label">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="TextColor" Value="{StaticResource TextDefault}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
