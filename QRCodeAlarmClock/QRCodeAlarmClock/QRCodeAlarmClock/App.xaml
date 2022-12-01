@@ -14,6 +14,7 @@
             <Color x:Key="DarkDarkGrey">#222222</Color>
             <Color x:Key="AlarmItemBackground">#000000</Color>
             <Color x:Key="Transparent">#00000000</Color>
+            <Color x:Key="CloseToTransparent">#11FFFFFF</Color>
 
             <Style x:Key="normal" TargetType="Label">
                 <Setter Property="FontSize" Value="20"/>

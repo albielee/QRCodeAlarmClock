@@ -14,5 +14,8 @@ C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAla
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\ref\QRCodeAlarmClock.dll
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\EditAlarmView.xaml.g.cs
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\EditRepeatView.xaml.g.cs
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\EditInfoView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditNameView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditQRView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditRepeatView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditSoundView.xaml.g.cs

@@ -27,6 +27,7 @@
                         <ScrollView x:Name="scrollView"
                             Scrolled="scrollView_Scrolled">
                             <StackLayout x:Name="AlarmList"
+                                         Spacing="0"
                                 Margin="20">
                                 <Label Text=" "
                                 Margin="20"/>

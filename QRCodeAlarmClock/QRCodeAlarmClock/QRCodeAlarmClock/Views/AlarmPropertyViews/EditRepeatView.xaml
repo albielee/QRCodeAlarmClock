@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRCodeAlarmClock.Views.EditRepeatView">
+  <ContentView.Content>
+      <StackLayout BackgroundColor="{StaticResource DarkGrey}">
+            <Button Text="Back"
+                    HorizontalOptions="StartAndExpand"
+                    Pressed="Back_Pressed"
+                    Margin="20,0"/>
+            <Grid Margin="20,0,20,200"
+                  VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+                    <Label Text="Every Monday"
+                           Style="{StaticResource normal}"/>
+                    <Label Text="Every Tuesday"
+                            Style="{StaticResource normal}"/>
+                    <Label Text="Every Wednesday"
+                            Style="{StaticResource normal}"/>
+                    <Label Text="Every Thursday"
+                            Style="{StaticResource normal}"/>
+                    <Label Text="Every Friday"
+                            Style="{StaticResource normal}"/>
+                    <Label Text="Every Saturday"
+                            Style="{StaticResource normal}"/>
+                    <Label Text="Every Sunday"
+                            Style="{StaticResource normal}"/>
+                </StackLayout>
+            </Grid>
+            
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

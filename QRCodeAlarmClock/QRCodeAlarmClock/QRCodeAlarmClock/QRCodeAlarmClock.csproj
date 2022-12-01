@@ -16,13 +16,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AlarmPropertyViews\EditQRView.xaml.cs">
+      <DependentUpon>EditQRView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AlarmPropertyViews\EditNameView.xaml.cs">
+      <DependentUpon>EditNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AlarmPropertyViews\EditSoundView.xaml.cs">
+      <DependentUpon>EditSoundView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\EditAlarmView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditInfoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditRepeatView.xaml">
+    <EmbeddedResource Update="Views\AlarmPropertyViews\EditRepeatView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

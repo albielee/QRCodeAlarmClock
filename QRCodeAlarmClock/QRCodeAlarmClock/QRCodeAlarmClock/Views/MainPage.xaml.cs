@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace QRCodeAlarmClock
@@ -62,23 +63,9 @@ namespace QRCodeAlarmClock
             return button;
         }
 
-        private void Button_Pressed(object sender, EventArgs e)
-        {
-            if(alarmView == null)
-            {
-                alarmView = new EditAlarmView();
-                alarmView.Closed += AlarmViewClosed;
-                alarmView.StartedClosing += AlarmViewStartedClosing;
-                MainView.Children.Add(alarmView);
-
-                ShrinkAlarmListFrame();
-            }
-        }
-
         private void ShrinkAlarmListFrame()
         {
             int horizontalThickness = 20;
-            int verticalThickness = 40;
 
             Animation shrinkAlarmListFrameH = new Animation(v => {
 
@@ -100,7 +87,7 @@ namespace QRCodeAlarmClock
         {
             ForegroundFlashFrame.Margin = new Thickness(100);
             ForegroundFlashFrame.CornerRadius = 40;
-            ForegroundFlashFrame.Opacity = 0;
+            ForegroundFlashFrame.Opacity = 0.1;
 
             Animation flashGrow = new Animation(v => ForegroundFlashFrame.Margin = new Thickness(v), 100, 0);
             flashGrow.Commit(this, "flashGrow", 4, 500, Easing.SinOut);
@@ -109,7 +96,12 @@ namespace QRCodeAlarmClock
             flashDown.Commit(this, "flashDown", 4, 500, Easing.SinOut);
 
             Animation flashCorners = new Animation(v => ForegroundFlashFrame.CornerRadius = (float)v, 40, 0);
-            flashDown.Commit(this, "flashCorners", 4, 500, Easing.SinOut);
+            flashDown.Commit(this, "flashCorners", 4, 500, Easing.SinOut, (x,y) =>
+            {
+                ForegroundFlashFrame.BackgroundColor = Color.Transparent;
+            });
+
+            ForegroundFlashFrame.BackgroundColor = Color.White;
         }
 
         private void GrowAlarmListFrame()
@@ -207,13 +199,62 @@ namespace QRCodeAlarmClock
         {
             Button selectButton = new Button()
             {
-                BackgroundColor = (Color)Application.Current.Resources["Transparent"],
+                BackgroundColor = (Color)Application.Current.Resources["CloseToTransparent"],
+                Opacity = 0.1,
+                CornerRadius = 0,
                 Command = vm.AlarmItemSelectedCommand,
                 CommandParameter = alarm,
             };
-            selectButton.Released += Button_Pressed;
+            selectButton.Pressed += SelectButton_Pressed;
+            selectButton.Released += SelectButton_Released;
 
             return selectButton;
+        }
+
+        private void SelectButton_Released(object sender, EventArgs e)
+        {
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+
+            if (alarmView == null)
+            {
+                alarmView = new EditAlarmView();
+                alarmView.Closed += AlarmViewClosed;
+                alarmView.StartedClosing += AlarmViewStartedClosing;
+                MainView.Children.Add(alarmView);
+
+                ShrinkAlarmListFrame();
+            }
+
+            Button b = ((Button)sender);
+            b.Opacity = 0.1;
+        }
+
+        private void ResetSelectButtons()
+        {
+            foreach(var child in AlarmList.Children)
+            {
+                if(child.GetType() == typeof(Button))
+                {
+                    child.Opacity = 0.1;
+                }
+            }
+        }
+
+        private void SelectButton_Pressed(object sender, EventArgs e)
+        {
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+
+            Button b = ((Button)sender);
+            b.Opacity = 1;
+            b.FadeTo(0.1, 1000, Easing.CubicIn);
         }
 
         private BoxView CreateSeperatorLine()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +17,9 @@ namespace QRCodeAlarmClock.Views
         //Editing views//
         EditInfoView infoView;
         EditRepeatView repeatView;
+        EditSoundView soundView;
+        EditNameView nameView;
+        EditQRView qrView;
         //
 
         bool viewBeingOpened = false;
@@ -92,13 +95,63 @@ namespace QRCodeAlarmClock.Views
         {
             if (viewBeingOpened)
                 return;
-            viewBeingOpened = true;
 
             CreateRepeatView();
             OpenRightView(infoView, repeatView);
 
-            viewBeingOpened = false;
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
         }
+
+        private void EditInfoView_OpenSound()
+        {
+            if (viewBeingOpened)
+                return;
+
+            CreateSoundView();
+            OpenRightView(infoView, soundView);
+
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+        }
+
+        private void EditInfoView_OpenName()
+        {
+            if (viewBeingOpened)
+                return;
+
+            CreateNameView();
+            OpenRightView(infoView, nameView);
+
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+        }
+
+        private void EditInfoView_OpenQR()
+        {
+            if (viewBeingOpened)
+                return;
+
+            CreateQRView();
+            OpenRightView(infoView, qrView);
+
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+        }
+
+
 
         private void RemoveView(View view)
         {
@@ -112,8 +165,9 @@ namespace QRCodeAlarmClock.Views
 
         private void OpenRightView(View currentView, View newView)
         {
-            double moveDist = Application.Current.MainPage.Width;
+            viewBeingOpened = true;
 
+            double moveDist = Application.Current.MainPage.Width;
             Animation slideView1 = new Animation(v =>
             {
                 currentView.TranslationX = v;
@@ -121,6 +175,7 @@ namespace QRCodeAlarmClock.Views
             slideView1.Commit(this, "slideView1", 4, 400, Easing.SinInOut, (c, v) =>
             {
                 RemoveView(currentView);
+                viewBeingOpened = false;
             });
 
             Animation slideView2 = new Animation(v =>
@@ -134,8 +189,9 @@ namespace QRCodeAlarmClock.Views
         {
             AlarmEditingViews.RaiseChild(currentView);
 
-            double moveDist = Application.Current.MainPage.Width;
+            viewBeingOpened = true;
 
+            double moveDist = Application.Current.MainPage.Width;
             Animation slideView1 = new Animation(v =>
             {
                 newView.TranslationX = v;
@@ -149,6 +205,7 @@ namespace QRCodeAlarmClock.Views
             slideView2.Commit(this, "slideView2", 4, 400, Easing.SinInOut, (c, v) =>
             {
                 RemoveView(currentView);
+                viewBeingOpened = false;
             });
         }
 
@@ -160,31 +217,64 @@ namespace QRCodeAlarmClock.Views
             AlarmEditingViews.Children.Add(repeatView);
         }
 
+        private void CreateSoundView()
+        {
+            soundView = new EditSoundView() { };
+            soundView.BackPressed += SoundView_BackPressed;
+
+            AlarmEditingViews.Children.Add(soundView);
+        }
+
+        private void CreateNameView()
+        {
+            nameView = new EditNameView() { };
+            nameView.BackPressed += NameView_BackPressed;
+
+            AlarmEditingViews.Children.Add(nameView);
+        }
+
+        private void CreateQRView()
+        {
+            qrView = new EditQRView() { };
+            qrView.BackPressed += QRView_BackPressed;
+
+            AlarmEditingViews.Children.Add(qrView);
+        }
+
         private void RepeatView_BackPressed()
         {
             if (viewBeingOpened)
                 return;
-            viewBeingOpened = true;
 
             CreateInfoView();
             OpenLeftView(repeatView, infoView);
-
-            viewBeingOpened = false;
         }
 
-        private void EditInfoView_OpenQR()
+        private void NameView_BackPressed()
         {
+            if (viewBeingOpened)
+                return;
 
+            CreateInfoView();
+            OpenLeftView(nameView, infoView);
         }
 
-        private void EditInfoView_OpenSound()
+        private void SoundView_BackPressed()
         {
+            if (viewBeingOpened)
+                return;
 
+            CreateInfoView();
+            OpenLeftView(soundView, infoView);
         }
 
-        private void EditInfoView_OpenName()
+        private void QRView_BackPressed()
         {
+            if (viewBeingOpened)
+                return;
 
+            CreateInfoView();
+            OpenLeftView(qrView, infoView);
         }
     }
 }
