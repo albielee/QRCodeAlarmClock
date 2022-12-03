@@ -6,6 +6,15 @@ namespace QRCodeAlarmClock.Model
 {
     public class Alarm
     {
+        public int ID { get; set; }
+        public bool IsMonday { get; set; }
+        public bool IsTuesday { get; set; }
+        public bool IsWednesday { get; set; }
+        public bool IsThursday { get; set; }
+        public bool IsFriday { get; set; }
+        public bool IsSaturday { get; set; }
+        public bool IsSunday { get; set; }
+
         public bool IsEnabled { get; set; }
         private string name;
         public string Name
@@ -46,7 +55,8 @@ namespace QRCodeAlarmClock.Model
         /// <param name="name"></param>
         /// <param name="time"></param>
         /// <param name="qRCode"></param>
-        public Alarm(bool isEnabled, string name, DateTime time, string qRCode)        {
+        public Alarm(bool isEnabled, string name, DateTime time, string qRCode)
+        {
             IsEnabled = isEnabled;
             Name = name;
             Time = time;

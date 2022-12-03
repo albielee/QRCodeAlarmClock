@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
+        xmlns:menuItemViews="clr-namespace:QRCodeAlarmClock.Views.MenuItemViews"
+        x:Class="QRCodeAlarmClock.Views.MenuItemViews.MenuToggleButtonView"
+      HorizontalOptions="FillAndExpand"
+        x:Name="this">
+
+        <Label Style="{StaticResource normal}"
+                VerticalOptions="CenterAndExpand"
+                Margin="20,0"
+                Text="{Binding Name, Source={x:Reference this}}"
+                HorizontalOptions="Start"
+                x:Name="label"/>
+
+        <Image Source="orangeDiamond"
+                        Scale="0.5"
+                        HorizontalOptions="EndAndExpand"
+                        Margin="-20"
+                        x:Name="orangeDiamond">
+            <Image.Triggers>
+                <DataTrigger TargetType="Image" Binding="{Binding Toggle, Source={x:Reference this}}" Value="False">
+                    <Setter Property="Opacity" Value="0" />
+                </DataTrigger>
+            </Image.Triggers>
+        </Image>
+
+    <views:MenuButtonView ButtonPressed="MenuButtonView_ButtonPressed"/>
+
+</Grid>

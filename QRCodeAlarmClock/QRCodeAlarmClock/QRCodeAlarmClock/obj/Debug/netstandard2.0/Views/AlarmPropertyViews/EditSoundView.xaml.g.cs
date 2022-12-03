@@ -14,7 +14,7 @@ namespace QRCodeAlarmClock.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AlarmPropertyViews\\EditSoundView.xaml")]
-    public partial class EditSoundView : global::Xamarin.Forms.ContentView {
+    public partial class EditSoundView : global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {

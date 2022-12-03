@@ -19,3 +19,11 @@ C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAla
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditQRView.xaml.g.cs
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditRepeatView.xaml.g.cs
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditSoundView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\MenuButtonView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\MenuLineSeperatorView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\MenuNavButtonView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\AlarmPropertyViews\EditTemplateView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\OrangeArrowView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\MenuToggleButtonView.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\GrayArrow.xaml.g.cs
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\obj\Debug\netstandard2.0\Views\MenuItemViews\GrayCross.xaml.g.cs

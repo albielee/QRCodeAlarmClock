@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QRCodeAlarmClock.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,10 @@ namespace QRCodeAlarmClock.Views
         public EditAlarmView()
         {
             InitializeComponent();
+        }
 
+        public void OpenAlarmInfo()
+        {
             CreateInfoView();
 
             Open();
@@ -41,7 +45,8 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateInfoView()
         {
-            infoView = new EditInfoView() { };
+            var x = mainGrid.BindingContext;
+            infoView = new EditInfoView() { BindingContext = mainGrid.BindingContext };
             infoView.OpenQR += EditInfoView_OpenQR;
             infoView.OpenName += EditInfoView_OpenName;
             infoView.OpenRepeat += EditInfoView_OpenRepeat;
@@ -211,7 +216,7 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateRepeatView()
         {
-            repeatView = new EditRepeatView() { };
+            repeatView = new EditRepeatView() { BindingContext = this.BindingContext };
             repeatView.BackPressed += RepeatView_BackPressed;
 
             AlarmEditingViews.Children.Add(repeatView);
@@ -219,7 +224,7 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateSoundView()
         {
-            soundView = new EditSoundView() { };
+            soundView = new EditSoundView() { BindingContext = this.BindingContext };
             soundView.BackPressed += SoundView_BackPressed;
 
             AlarmEditingViews.Children.Add(soundView);
@@ -227,7 +232,7 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateNameView()
         {
-            nameView = new EditNameView() { };
+            nameView = new EditNameView() { BindingContext = this.BindingContext };
             nameView.BackPressed += NameView_BackPressed;
 
             AlarmEditingViews.Children.Add(nameView);
@@ -235,7 +240,7 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateQRView()
         {
-            qrView = new EditQRView() { };
+            qrView = new EditQRView() { BindingContext = this.BindingContext };
             qrView.BackPressed += QRView_BackPressed;
 
             AlarmEditingViews.Children.Add(qrView);

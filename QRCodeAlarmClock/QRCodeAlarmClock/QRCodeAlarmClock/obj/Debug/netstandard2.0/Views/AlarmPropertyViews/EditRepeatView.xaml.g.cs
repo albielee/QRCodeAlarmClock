@@ -14,11 +14,15 @@ namespace QRCodeAlarmClock.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AlarmPropertyViews\\EditRepeatView.xaml")]
-    public partial class EditRepeatView : global::Xamarin.Forms.ContentView {
+    public partial class EditRepeatView : global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView @this;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditRepeatView));
+            @this = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView>(this, "this");
         }
     }
 }

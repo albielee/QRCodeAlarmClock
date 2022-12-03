@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:menuitemviews="clr-namespace:QRCodeAlarmClock.Views.MenuItemViews"
+             xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
+             x:Class="QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView">
+    <ContentView.Resources>
+
+        <ControlTemplate x:Key="editTemplate">
+            <Grid BackgroundColor="{StaticResource DarkGrey}">
+                <StackLayout Margin="20,0">
+                    <Grid>
+                        <menuitemviews:OrangeArrowView/>
+                        <Button Text="Back"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Pressed="Back_Pressed"/>
+                        <Label Text="{TemplateBinding Title}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource normal}"/>
+                    </Grid>
+                    
+                    <ContentPresenter>
+
+                    </ContentPresenter>
+                </StackLayout>
+            </Grid>
+        </ControlTemplate>
+    </ContentView.Resources>
+</ContentView>

@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QRCodeAlarmClock.Views.EditSoundView">
-  <ContentView.Content>
-      <StackLayout BackgroundColor="{StaticResource DarkGrey}">
-            <Button Text="Back"
-                    HorizontalOptions="StartAndExpand"
-                    Pressed="Back_Pressed"
-                    Margin="20,0"/>
+<alarmpropertyviews:EditTemplateView  xmlns:alarmpropertyviews="clr-namespace:QRCodeAlarmClock.Views.AlarmPropertyViews"
+                                      xmlns="http://xamarin.com/schemas/2014/forms" 
+                                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                     x:Class="QRCodeAlarmClock.Views.EditSoundView"
+                                        ControlTemplate="{StaticResource editTemplate}"
+                                      Title="Sound">    
+    <ContentView.Content>
+        <StackLayout>
             <Label Text="Hello Xamarin.Forms!" />
       </StackLayout>
   </ContentView.Content>
-</ContentView>
+</alarmpropertyviews:EditTemplateView>

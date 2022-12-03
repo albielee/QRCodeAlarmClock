@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "jOYTKU4OO18nnqxzzJN5elmwqWiWY2v8rTbIVWv+UP9nLJsCPSeSiAr3dBIBPzYp49q+t91ybKhJyIaK4UHBCw==",
+  "dgSpecHash": "saDpDnZE/FXb3jn54nHxTh49sSWdeEGiuL2mBigqXKhIbIKS63i5T3a3ygEzbj4a+GiaMIbbOrtbvCM8PcQ/Ew==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alberto Lee\\Documents\\Repos\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock.Android\\QRCodeAlarmClock.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.androidx.activity\\1.2.4.1\\xamarin.androidx.activity.1.2.4.1.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.androidx.annotation\\1.2.0.1\\xamarin.androidx.annotation.1.2.0.1.nupkg.sha512",

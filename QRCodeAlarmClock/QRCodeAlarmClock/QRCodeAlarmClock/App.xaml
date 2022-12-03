@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="QRCodeAlarmClock.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -12,6 +13,7 @@
             <Color x:Key="Grey">#777777</Color>
             <Color x:Key="DarkGrey">#444444</Color>
             <Color x:Key="DarkDarkGrey">#222222</Color>
+            <Color x:Key="SubtleDarkDarkGrey">#2F2F2F</Color>
             <Color x:Key="AlarmItemBackground">#000000</Color>
             <Color x:Key="Transparent">#00000000</Color>
             <Color x:Key="CloseToTransparent">#11FFFFFF</Color>
@@ -38,6 +40,22 @@
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="TextColor" Value="{StaticResource TextDefault}"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="menu" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkDarkGrey}"/>
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
+
+            <Style x:Key="menuStack" TargetType="StackLayout">
+                <Setter Property="Spacing" Value="0"/>
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="ios:Entry.CursorColor" Value="{StaticResource Orange}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

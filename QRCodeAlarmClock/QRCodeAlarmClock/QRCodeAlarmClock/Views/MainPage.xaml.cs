@@ -221,10 +221,12 @@ namespace QRCodeAlarmClock
 
             if (alarmView == null)
             {
-                alarmView = new EditAlarmView();
+                alarmView = new EditAlarmView() { BindingContext = MainView.BindingContext };
                 alarmView.Closed += AlarmViewClosed;
                 alarmView.StartedClosing += AlarmViewStartedClosing;
                 MainView.Children.Add(alarmView);
+
+                alarmView.OpenAlarmInfo();
 
                 ShrinkAlarmListFrame();
             }

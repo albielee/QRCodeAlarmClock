@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kVSnqB/hLfGm/Mf+Q4YQCZgmItWJpee2yX5JlkAM7QDiDtPcQ/lJd6QwpXpD+MLya2jIPmkenxivxrOdUytNMw==",
+  "dgSpecHash": "Gy3JEdKWcWUBJ+ZjUNwOaGYkLIwiUtHitG/dc7pjkzuKSXPPMyBzIeVc3ppFx9Lbc1tqzy8pckHXw9ifslv1gg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alberto Lee\\Documents\\Repos\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"

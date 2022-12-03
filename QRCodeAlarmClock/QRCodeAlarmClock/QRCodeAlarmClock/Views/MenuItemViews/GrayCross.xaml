@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRCodeAlarmClock.Views.MenuItemViews.GrayCross">
+    <Frame BackgroundColor="{StaticResource Grey}"
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            CornerRadius="10"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Padding="0">
+        <Grid>
+            <BoxView WidthRequest="12"
+                                     HeightRequest="2"
+                                     Rotation="45"
+                                     BackgroundColor="{StaticResource DarkDarkGrey}"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     CornerRadius="2"/>
+            <BoxView WidthRequest="12"
+                                     HeightRequest="2"
+                                     Rotation="-45"
+                                     BackgroundColor="{StaticResource DarkDarkGrey}"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     CornerRadius="2"/>
+        </Grid>
+    </Frame>
+</ContentView>

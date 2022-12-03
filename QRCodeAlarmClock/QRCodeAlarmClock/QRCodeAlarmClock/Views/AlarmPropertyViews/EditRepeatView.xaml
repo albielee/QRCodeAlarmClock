@@ -1,34 +1,69 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QRCodeAlarmClock.Views.EditRepeatView">
-  <ContentView.Content>
-      <StackLayout BackgroundColor="{StaticResource DarkGrey}">
-            <Button Text="Back"
-                    HorizontalOptions="StartAndExpand"
-                    Pressed="Back_Pressed"
-                    Margin="20,0"/>
-            <Grid Margin="20,0,20,200"
-                  VerticalOptions="CenterAndExpand">
-                <StackLayout VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="CenterAndExpand">
-                    <Label Text="Every Monday"
-                           Style="{StaticResource normal}"/>
-                    <Label Text="Every Tuesday"
-                            Style="{StaticResource normal}"/>
-                    <Label Text="Every Wednesday"
-                            Style="{StaticResource normal}"/>
-                    <Label Text="Every Thursday"
-                            Style="{StaticResource normal}"/>
-                    <Label Text="Every Friday"
-                            Style="{StaticResource normal}"/>
-                    <Label Text="Every Saturday"
-                            Style="{StaticResource normal}"/>
-                    <Label Text="Every Sunday"
-                            Style="{StaticResource normal}"/>
+<alarmpropertyviews:EditTemplateView  xmlns:alarmpropertyviews="clr-namespace:QRCodeAlarmClock.Views.AlarmPropertyViews"
+                                      xmlns="http://xamarin.com/schemas/2014/forms" 
+                                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                                      xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
+                                      xmlns:menuItemViews="clr-namespace:QRCodeAlarmClock.Views.MenuItemViews"
+                                      xmlns:vm="clr-namespace:QRCodeAlarmClock.ViewModels"
+                                      x:Class="QRCodeAlarmClock.Views.EditRepeatView"
+                                      ControlTemplate="{StaticResource editTemplate}"
+                                      x:Name="this"
+                                      Title="Repeat">
+
+    <ContentView.Content >
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Margin="0,150,0,0"
+                     BindingContext="{Binding BindingContext, Source={x:Reference this}}">
+            <Frame Style="{StaticResource menu}">
+                <StackLayout Style="{StaticResource menuStack}"
+                    VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand"
+                             >
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatMonday, Mode=TwoWay}"
+                                                        Name="Every Monday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatTuesday, Mode=TwoWay}"
+                                                        Name="Every Tuesday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatWednesday, Mode=TwoWay}"
+                                                        Name="Every Wednesday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatThursday, Mode=TwoWay}"
+                                                        Name="Every Thursday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatFriday, Mode=TwoWay}"
+                                                        Name="Every Friday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatSaturday, Mode=TwoWay}"
+                                                        Name="Every Saturday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
+
+                    <menuItemViews:MenuToggleButtonView Toggle="{Binding Path=RepeatSunday, Mode=TwoWay}"
+                                                        Name="Every Sunday"
+                                                        ButtonPressed="EveryMonday_ButtonPressed"/>
+
+                    <menuItemViews:MenuLineSeperatorView />
                 </StackLayout>
-            </Grid>
-            
-      </StackLayout>
-  </ContentView.Content>
-</ContentView>
+            </Frame>
+        </StackLayout>
+        
+    </ContentView.Content>
+</alarmpropertyviews:EditTemplateView>

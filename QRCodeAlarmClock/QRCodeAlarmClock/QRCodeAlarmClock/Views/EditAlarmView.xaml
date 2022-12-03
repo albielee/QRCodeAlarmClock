@@ -3,17 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:QRCodeAlarmClock.ViewModels"
              xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
-             x:Class="QRCodeAlarmClock.Views.EditAlarmView">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <vm:EditAlarmViewVM x:Key="vm"/>
-            <views:EditRepeatView x:Key="editRepeatView"/>
-            <views:EditInfoView x:Key="editInfoViews"/>
-        </ResourceDictionary>
-    </ContentView.Resources>
-    
+             x:Class="QRCodeAlarmClock.Views.EditAlarmView"
+             x:Name="this">
+
   <ContentView.Content>
-        <Grid BindingContext="{Binding Source={StaticResource vm}}">
+        <Grid x:Name="mainGrid"
+              BindingContext="{Binding BindingContext, Source={x:Reference this}}">
             <Frame CornerRadius="20"
                    x:Name="editorViewFrame"
                    Padding="0,20"
