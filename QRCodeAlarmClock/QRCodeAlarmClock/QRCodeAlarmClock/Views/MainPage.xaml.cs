@@ -161,7 +161,7 @@ namespace QRCodeAlarmClock
 
         private void AlarmRingingView_Tapped(List<Alarm> alarmList)
         {
-
+            FlashMainView();
 
             alarmRingingView.Tapped -= AlarmRingingView_Tapped;
             MainView.Children.Remove(alarmRingingView);

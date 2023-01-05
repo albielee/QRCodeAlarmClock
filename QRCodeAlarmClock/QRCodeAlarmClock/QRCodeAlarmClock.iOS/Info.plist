@@ -40,5 +40,9 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 </dict>
 </plist>

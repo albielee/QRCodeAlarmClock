@@ -24,6 +24,11 @@
                             Pressed="Button_Pressed"/>
                     <Grid HorizontalOptions="FillAndExpand"
                           VerticalOptions="FillAndExpand"
+                          BackgroundColor="{StaticResource Red}"
+                          Opacity="0"
+                          x:Name="flashErrorOverlay"/>
+                    <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
                           BackgroundColor="White"
                           Opacity="0"
                           x:Name="flashOverlay"/>

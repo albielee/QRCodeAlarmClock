@@ -64,9 +64,18 @@ namespace QRCodeAlarmClock.Views.AlarmPropertyViews
             IQRCodeDetector detector = DependencyService.Get<IQRCodeDetector>();
             string scanResult = detector.ScanImage(image);
 
+
             //If a new code is being set
             if (setNewCode)
             {
+                if(scanResult == null || scanResult?.Length == 0)
+                { 
+                    PictureFlashError();
+                }
+                else
+                {
+                    PictureFlash();
+                }
                 //viewModel.SetNewCode(scanResult, image);
             }
             //else, verify the code with the current alarm
@@ -74,8 +83,14 @@ namespace QRCodeAlarmClock.Views.AlarmPropertyViews
             {
                 if (VerifyCode(scanResult))
                 {
+                    PictureFlash();
+
                     CloseScanGrid();
                     ScanSuccessful?.Invoke();
+                }
+                else
+                {
+                    PictureFlashError();
                 }
             }
 
@@ -89,7 +104,6 @@ namespace QRCodeAlarmClock.Views.AlarmPropertyViews
 
         private async void TapIconView_ButtonPressed()
         {
-            //var fileresult = await MediaPicker.CapturePhotoAsync();
             Shutter();
         }
 
@@ -100,12 +114,40 @@ namespace QRCodeAlarmClock.Views.AlarmPropertyViews
 
         private void Shutter()
         {
-            flashOverlay.Opacity = 1;
-            flashOverlay.FadeTo(0, 250, Easing.CubicOut);
             if (imageBeingCaptured.CurrentCount == 0)
                 return;
 
+            flashOverlay.Opacity = 1;
             cameraView.Shutter();
+        }
+
+        private void PictureFlash()
+        {
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.LongPress);
+            }
+            catch { }
+
+            Animation pictureFlash = new Animation(v => flashOverlay.Opacity = v, 1, 0);
+            pictureFlash.Commit(this, "pictureFlash", 16, 250, Easing.CubicOut);
+        }
+
+        private void PictureFlashError()
+        {
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.LongPress);
+            }
+            catch { }
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                flashOverlay.Opacity = 0;
+                Animation pictureFlashError = new Animation(v => flashErrorOverlay.Opacity = v, 1, 0);
+                pictureFlashError.Commit(this, "pictureFlashError", 16, 500, Easing.CubicOut);
+            });
+            
         }
     }
 }

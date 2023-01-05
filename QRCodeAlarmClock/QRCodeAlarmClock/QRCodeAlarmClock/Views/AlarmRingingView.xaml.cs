@@ -125,7 +125,7 @@ namespace QRCodeAlarmClock.Views
             DisposeObjects();
 
             Animation fadeMainView = new Animation(v => mainView.Opacity = v, 1, 0);
-            fadeMainView.Commit(this, "fadeMainView", 4, 250, Easing.CubicInOut, (x, y) =>
+            fadeMainView.Commit(this, "fadeMainView", 4, 1000, Easing.CubicInOut, (x, y) =>
             {
                 Tapped?.Invoke(alarmList);
             });

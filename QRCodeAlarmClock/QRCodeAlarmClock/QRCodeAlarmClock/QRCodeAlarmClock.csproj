@@ -91,5 +91,6 @@
 
   <ItemGroup>
     <Folder Include="PropertyConverters\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
