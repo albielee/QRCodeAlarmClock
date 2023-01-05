@@ -37,6 +37,7 @@ namespace QRCodeAlarmClock.Model
                 return true;
             }
             catch
+
             {
                 return false;
             }
@@ -48,7 +49,13 @@ namespace QRCodeAlarmClock.Model
             {
                 string fileText = File.ReadAllText(filePath);
 
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Alarm>>(fileText);
+                List<Alarm> loadedAlarms = new List<Alarm>();
+                foreach(Alarm alarm in Newtonsoft.Json.JsonConvert.DeserializeObject<List<Alarm>>(fileText).OrderBy(x => x.ID))
+                {
+                    loadedAlarms.Add(alarm);
+                }
+
+                return loadedAlarms;
             }
             catch
             {
@@ -67,7 +74,7 @@ namespace QRCodeAlarmClock.Model
             {
                 List<Alarm> alarms = LoadAlarms();
                 if (alarms == null)
-                    return false;
+                    alarms = new List<Alarm>();
 
                 Alarm foundAlarm = alarms.FirstOrDefault(a => a.ID == alarm.ID);
 
@@ -99,7 +106,7 @@ namespace QRCodeAlarmClock.Model
         private void CreateFile()
         {
             if (!File.Exists(filePath))
-                using (FileStream f = File.Create(filePath)) ;
+                using (FileStream f = File.Create(filePath));
         }
     }
 }

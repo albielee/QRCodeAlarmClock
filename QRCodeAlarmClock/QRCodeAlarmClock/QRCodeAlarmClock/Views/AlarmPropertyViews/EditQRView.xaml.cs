@@ -13,9 +13,17 @@ namespace QRCodeAlarmClock.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditQRView : EditTemplateView
     {
+        public event ScannerScannedEventHandler ScannerScanned;
+        public delegate void ScannerScannedEventHandler();
+
         public EditQRView()
         {
             InitializeComponent();
+        }
+
+        private void OpenScanner_ButtonPressed()
+        {
+
         }
     }
 }

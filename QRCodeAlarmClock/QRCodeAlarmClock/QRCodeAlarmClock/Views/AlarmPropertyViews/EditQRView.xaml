@@ -1,12 +1,55 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <alarmViews:EditTemplateView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:alarmViews="clr-namespace:QRCodeAlarmClock.Views.AlarmPropertyViews"
+             xmlns:alarmViews="clr-namespace:QRCodeAlarmClock.Views.AlarmPropertyViews" xmlns:menuItemViews="clr-namespace:QRCodeAlarmClock.Views.MenuItemViews" xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
              x:Class="QRCodeAlarmClock.Views.EditQRView"
              Title="QR"
-             ControlTemplate="{StaticResource editTemplate}">
+             ControlTemplate="{StaticResource editTemplate}"
+             x:Name="this">
     
     <ContentView.Content>
-        <Label Text="test"/>
+        <StackLayout BindingContext="{Binding BindingContext, Source={x:Reference this}}">
+            <!--Open QR scanner-->
+            <Frame Style="{StaticResource menu}"
+                   Margin="20">
+                <StackLayout Style="{StaticResource menu}"
+                             x:Name="scannerMenu">
+                    <Grid HeightRequest="60">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Set QR"
+                                    Style="{StaticResource alarmNormal}"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    Margin="20,0,0,0"/>
+                            <menuItemViews:GrayArrow HorizontalOptions="End"
+                                                     Grid.Row="0"
+                                                     Grid.Column="1"
+                                                     Rotation="90"/>
+                        </Grid>
+                        <views:MenuButtonView ButtonPressed="OpenScanner_ButtonPressed"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Label Text="QR Code"
+                   Margin="40,0,0,0"
+                   TextColor="{StaticResource DarkGrey}"
+                   Style="{StaticResource alarmNormal}"/>
+            <Frame Style="{StaticResource menu}"
+                   Margin="20">
+                <Frame CornerRadius="20"
+                       HasShadow="False"
+                       IsClippedToBounds="True"
+                       Padding="0">
+                    <Image Source="{Binding SetImage}"/>
+                </Frame>
+            </Frame>
+        </StackLayout>
+        
     </ContentView.Content>
 </alarmViews:EditTemplateView>

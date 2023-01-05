@@ -17,8 +17,16 @@ namespace QRCodeAlarmClock.Views {
     public partial class EditQRView : global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView @this;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout scannerMenu;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditQRView));
+            @this = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::QRCodeAlarmClock.Views.AlarmPropertyViews.EditTemplateView>(this, "this");
+            scannerMenu = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "scannerMenu");
         }
     }
 }

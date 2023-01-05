@@ -15,6 +15,21 @@ namespace QRCodeAlarmClock.Views.AlarmPropertyViews
         public event BackPressedEventHandler BackPressed;
         public delegate void BackPressedEventHandler();
 
+
+        public static readonly BindableProperty BackPressedProperty =
+        BindableProperty.Create(nameof(TriggerBackButton), typeof(bool), typeof(EditTemplateView), null, propertyChanged: OnEventNameChanged);
+        static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            EditTemplateView view = (EditTemplateView)bindable;
+            view.BackPressed?.Invoke();
+        }
+
+        public bool TriggerBackButton
+        {
+            get { return (bool)GetValue(BackPressedProperty); }
+            set { SetValue(BackPressedProperty, value); }
+        }
+
         public static readonly BindableProperty TitleProperty =
         BindableProperty.Create(nameof(Title), typeof(string), typeof(EditTemplateView), null);
 

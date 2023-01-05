@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRCodeAlarmClock.Views.MenuItemViews.TapIconView">
+  <ContentView.Content>
+        <Grid x:Name="mainGrid"
+              Opacity="0.6">
+            
+            <Ellipse BackgroundColor="Transparent"
+                     StrokeThickness="20"
+                     Stroke="White"
+                     x:Name="ellipse1"
+                     Opacity="0"
+                     InputTransparent="True"/>
+            <Ellipse BackgroundColor="Transparent"
+                     Stroke="White"
+                     StrokeThickness="20"
+                     x:Name="ellipse2"
+                     Opacity="0"
+                     InputTransparent="True"/>
+            <Image Source="tap.png"
+                   x:Name="tapIcon"
+                   TranslationX="20"
+                   TranslationY="13"
+                   Opacity="0.6"
+                   InputTransparent="True"/>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

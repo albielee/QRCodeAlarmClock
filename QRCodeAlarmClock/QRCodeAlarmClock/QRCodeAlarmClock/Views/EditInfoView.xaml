@@ -32,7 +32,8 @@
                     HorizontalOptions="Center"
                     CornerRadius="165"/>
 
-            <Frame Style="{StaticResource menu}">
+            <Frame Style="{StaticResource menu}"
+                   Margin="20">
                 <StackLayout Style="{StaticResource menuStack}">
                     <Grid HeightRequest="60">
                         <!--Repeat-->
@@ -46,7 +47,7 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     VerticalOptions="Center"
-                                    Margin="10,0"/>
+                                    Margin="20,0,0,0"/>
                             <Grid Grid.Row="0"
                                   Grid.Column="1"
                                   HorizontalOptions="EndAndExpand">
@@ -55,7 +56,7 @@
                                         Style="{StaticResource alarmNormal}"
                                         FontAttributes="None"
                                         VerticalOptions="Center"
-                                        Margin="0,0,20,0"/>
+                                        Margin="0,0,27,0"/>
                                 <menuItemViews:GrayArrow HorizontalOptions="End"/>
                             </Grid>
                             
@@ -78,15 +79,15 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     VerticalOptions="Center"
-                                    Margin="10,0"/>
+                                    Margin="20,0,0,0"/>
                             <Grid Grid.Row="0"
                                   Grid.Column="1"
                                   HorizontalOptions="EndAndExpand">
-                                <Label Text="{Binding Name}"
+                                <Label Text="{Binding SetName}"
                                         Style="{StaticResource alarmNormal}"
                                         FontAttributes="None"
                                         VerticalOptions="Center"
-                                        Margin="0,0,20,0"/>
+                                        Margin="0,0,27,0"/>
                                 <menuItemViews:GrayArrow HorizontalOptions="End"/>
                             </Grid>
 
@@ -109,7 +110,7 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     VerticalOptions="Center"
-                                    Margin="10,0"/>
+                                    Margin="20,0,0,0"/>
                             <Grid Grid.Row="0"
                                   Grid.Column="1"
                                   HorizontalOptions="EndAndExpand">
@@ -140,7 +141,7 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     VerticalOptions="Center"
-                                    Margin="10,0"/>
+                                    Margin="20,0,0,0"/>
                             <Grid Grid.Row="0"
                                   Grid.Column="1"
                                   HorizontalOptions="EndAndExpand">
@@ -158,18 +159,24 @@
                     </Grid>
                 </StackLayout>
             </Frame>
-            
 
-            <Label Text="Name"
-                                   Style="{StaticResource alarmNormal}"
-                                   Grid.Row="1"
-                                   Grid.Column="0"/>
-            <Label Text="Repeat"
-                                   Style="{StaticResource alarmNormal}"
-                                   Grid.Row="0"
-                                   Grid.Column="0"/>
+            <!--Delete alarm-->
+            <Frame Style="{StaticResource menu}"
+                   IsVisible="{Binding IsAlarmSelected}"
+                   Margin="20,0,20,0"
+                   VerticalOptions="End">
+                <Grid HeightRequest="60">
+                    <Label Text="Delete Alarm"
+                               TextColor="Red"
+                               Style="{StaticResource alarmNormal}"
+                               FontAttributes="None"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,20,0"/>
+                    <views:MenuNavButtonView ButtonPressed="DeleteButton_Pressed"/>
+                </Grid>
+            </Frame>
 
-            <views:MenuButtonView />
         </StackLayout>
     </ContentView.Content>
 </ContentView>

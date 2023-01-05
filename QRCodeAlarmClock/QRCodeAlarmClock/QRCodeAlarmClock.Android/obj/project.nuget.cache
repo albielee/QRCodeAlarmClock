@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "saDpDnZE/FXb3jn54nHxTh49sSWdeEGiuL2mBigqXKhIbIKS63i5T3a3ygEzbj4a+GiaMIbbOrtbvCM8PcQ/Ew==",
+  "dgSpecHash": "6E7/AzN3APPuuWvYugvbkonTwb/1Lykz4U0GnL9MZGOnhQE7jaKGkcmoI+Tu2okXHQwH6xNw+6CUWIiz/zDrZg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alberto Lee\\Documents\\Repos\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock.Android\\QRCodeAlarmClock.Android.csproj",
   "expectedPackageFiles": [
@@ -60,8 +60,9 @@
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.androidx.versionedparcelable\\1.1.1.8\\xamarin.androidx.versionedparcelable.1.1.1.8.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.androidx.viewpager\\1.0.0.8\\xamarin.androidx.viewpager.1.0.0.8.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.androidx.viewpager2\\1.0.0.10\\xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
-    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
-    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.communitytoolkit\\2.0.0\\xamarin.communitytoolkit.2.0.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.4\\xamarin.essentials.1.7.4.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2545\\xamarin.forms.5.0.0.2545.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.google.android.material\\1.4.0.2\\xamarin.google.android.material.1.4.0.2.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
   ],

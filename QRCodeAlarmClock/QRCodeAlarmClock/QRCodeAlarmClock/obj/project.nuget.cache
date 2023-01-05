@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Gy3JEdKWcWUBJ+ZjUNwOaGYkLIwiUtHitG/dc7pjkzuKSXPPMyBzIeVc3ppFx9Lbc1tqzy8pckHXw9ifslv1gg==",
+  "dgSpecHash": "rQArH3jvPAXyxzCZiZ8fSdFadh54GUz3meZ3MBf/vmmA9rYzhM00fFYzl9lUNRAloTfqeD5Jv64V3cdVceBd5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alberto Lee\\Documents\\Repos\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock\\QRCodeAlarmClock.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,13 @@
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
-    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.7.0\\system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.communitytoolkit\\2.0.0\\xamarin.communitytoolkit.2.0.0.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.essentials\\1.7.4\\xamarin.essentials.1.7.4.nupkg.sha512",
+    "C:\\Users\\Alberto Lee\\.nuget\\packages\\xamarin.forms\\5.0.0.2545\\xamarin.forms.5.0.0.2545.nupkg.sha512"
   ],
   "logs": []
 }

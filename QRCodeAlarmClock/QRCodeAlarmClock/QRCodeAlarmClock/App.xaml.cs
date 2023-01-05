@@ -6,11 +6,18 @@ namespace QRCodeAlarmClock
 {
     public partial class App : Application
     {
+        MainPage mainPage;
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            mainPage = new MainPage();
+            MainPage = mainPage;
+        }
+
+        public static void Test()
+        {
+           
         }
 
         protected override void OnStart()
@@ -21,8 +28,9 @@ namespace QRCodeAlarmClock
         {
         }
 
-        protected override void OnResume()
+        protected override void OnResume() //CALL THIS WHEN AN ALARM RINGS OR IS OPENED!!!! ???
         {
+            mainPage.CheckForRingingAlarm();
         }
     }
 }

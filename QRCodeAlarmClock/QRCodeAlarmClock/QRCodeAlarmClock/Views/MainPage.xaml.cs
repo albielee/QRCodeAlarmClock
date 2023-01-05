@@ -1,66 +1,317 @@
-﻿using QRCodeAlarmClock.Model;
+﻿using QRCodeAlarmClock.Interfaces;
+using QRCodeAlarmClock.Model;
 using QRCodeAlarmClock.ViewModels;
 using QRCodeAlarmClock.Views;
+using QRCodeAlarmClock.Views.MenuItemViews;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace QRCodeAlarmClock
 {
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class MainPage : ContentPage
     {
         const int alarmFadeDist = 80;
 
         EditAlarmView alarmView;
+        AlarmRingingView alarmRingingView;
+
         double startScrollY;
+
+        MainPageVM vm;
+
+        SemaphoreSlim listGate;
+
+
+        public static readonly BindableProperty ResumedProperty =
+        BindableProperty.Create(nameof(Resumed), typeof(bool), typeof(MainPage), null, propertyChanged: OnEventNameChanged);
+        static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            MainPage view = (MainPage)bindable;
+            view.CheckForRingingAlarm();
+        }
+
+        public bool Resumed
+        {
+            get { return (bool)GetValue(ResumedProperty); }
+            set { SetValue(ResumedProperty, value); }
+        }
 
         public MainPage()
         {
             InitializeComponent();
+            vm = ((MainPageVM)MainView.BindingContext);
+            vm.AlarmListChanged += AlarmListChanged;
+
+            listGate = new SemaphoreSlim(1);
 
             PopulateAlarmList();
+
+            DependencyService.Get<IRingAlarm>().AlarmRang += CheckForRingingAlarm;
+        }
+
+        public void CheckForRingingAlarm()
+        {
+            TimeSpan alarmRingingTime = new TimeSpan(0, 0, 300);
+            DateTime currentTime = DateTime.Now;
+            //Check for any alarms that should be ringing
+
+            List<Alarm> alarmList = new List<Alarm>();
+            foreach (Alarm alarm in vm.AlarmList)
+            {
+                DayOfWeek day = currentTime.DayOfWeek;
+
+                TimeSpan alarmTime = alarm.Time.TimeOfDay;
+                TimeSpan currentDayTime = currentTime.TimeOfDay;
+                bool inRange = Math.Abs((alarmTime - currentDayTime).Ticks) < alarmRingingTime.Ticks;
+
+                if (alarm.IsMonday && day == DayOfWeek.Monday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsTuesday && day == DayOfWeek.Tuesday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsWednesday && day == DayOfWeek.Wednesday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsThursday && day == DayOfWeek.Thursday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsFriday && day == DayOfWeek.Friday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsSaturday && day == DayOfWeek.Saturday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else if (alarm.IsSunday && day == DayOfWeek.Sunday)
+                {
+                    if (inRange)
+                    {
+                        alarmList.Add(alarm);
+                    }
+                }
+                else
+                {
+                    if (alarm.IsEnabled)
+                    {
+                        if (inRange)
+                        {
+                            alarmList.Add(alarm);
+                        }
+                    }
+                }
+            }
+
+            if(alarmList.Count > 0)
+                CreateAlarmRingingView(alarmList);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CheckForRingingAlarm();
+        }
+
+        private void CreateAlarmRingingView(List<Alarm> alarmList)
+        {
+            if(alarmRingingView == null)
+            {
+                alarmRingingView = new AlarmRingingView(alarmList);
+                MainView.Children.Add(alarmRingingView);
+                alarmRingingView.Tapped += AlarmRingingView_Tapped;
+            }
+            else
+            {
+                alarmRingingView.AddAlarms(alarmList);
+            }
+        }
+
+        private void AlarmRingingView_Tapped(List<Alarm> alarmList)
+        {
+
+
+            alarmRingingView.Tapped -= AlarmRingingView_Tapped;
+            MainView.Children.Remove(alarmRingingView);
+            alarmRingingView = null;
+        }
+
+
+        /// <summary>
+        /// Update alarm list to update any changes.
+        /// To prevent O(n^2) the alarm list and AlarmList.Children are always in the same order.
+        /// </summary>
+        private void AlarmListChanged()
+        {
+            listGate.Wait();
+
+            List<MenuAlarmListItemView> alarmsToDelete = new List<MenuAlarmListItemView>();
+            List<(Alarm, MenuAlarmListItemView)> alarmsToChange = new List<(Alarm, MenuAlarmListItemView)>();
+            foreach(MenuAlarmListItemView alarmItem in AlarmList.Children)
+            {
+                int itemId = alarmItem.Alarm.ID;
+                Alarm viewModelAlarm = vm.AlarmList.FirstOrDefault(a => a.ID == itemId);
+
+                //If alarm is null, delete
+                if(viewModelAlarm == null)
+                {
+                    alarmsToDelete.Add(alarmItem);
+                }
+                else if (viewModelAlarm.IsChanged)
+                {
+                    alarmsToChange.Add((viewModelAlarm, alarmItem));
+                    viewModelAlarm.IsChanged = false;
+                }
+            }
+
+            //Delete alarms
+            foreach(var alarmView in alarmsToDelete)
+            {
+                RemoveSingleAlarm(alarmView, true);
+            }
+
+            //Change alarms
+            foreach((Alarm alarm,MenuAlarmListItemView view) tuple in alarmsToChange)
+            {
+                int viewStackPos = AlarmList.Children.IndexOf(tuple.view);
+                RemoveSingleAlarm(tuple.view, false);
+                AddSingleAlarm(tuple.alarm, viewStackPos);
+            }
+
+            //Add any new alarms
+            int alarmCount = 0;
+            foreach (Alarm alarm in vm.AlarmList)
+            {
+                //Try get the alarm view item
+                View alarmItemView = null;
+                try
+                {
+                    alarmItemView = AlarmList.Children[alarmCount];
+                }
+                catch { }
+
+                if(alarmItemView == null) //Add the new alarm
+                {
+                    AddSingleAlarm(alarm);
+                }
+
+                alarmCount++;
+            }
+
+            listGate.Release();
+        }
+
+        private async void RemoveSingleAlarm(View alarmItem, bool animate)
+        {
+            ((MenuAlarmListItemView)alarmItem).Dispose();
+            ((MenuAlarmListItemView)alarmItem).SelectButtonClicked -= AlarmItem_SelectButtonClicked;
+            ((MenuAlarmListItemView)alarmItem).SwitchToggled -= AlarmItem_SwitchToggled;
+
+            if (animate)
+            {
+                double startHeight = alarmItem.Height;
+
+                Animation slideAlarmItemAway = new Animation(v => alarmItem.HeightRequest = v, startHeight, 0);
+                slideAlarmItemAway.Commit(this, "slideAlarmItemAway", 4, 500, Easing.CubicInOut, (x, y) =>
+                {
+                    AlarmList.Children.Remove(alarmItem);
+                });
+                await Task.Delay(501);
+            }
+            else
+            {
+                AlarmList.Children.Remove(alarmItem);
+            }
+        }
+
+        /// <summary>
+        /// Adds a single alarm to the bottom of the view stack. Animates the action.
+        /// </summary>
+        /// <param name="alarm"></param>
+        private void AddSingleAlarm(Alarm alarm)
+        {
+            Grid alarmItem = CreateAlarmView(alarm);
+            AlarmList.Children.Add(alarmItem);
+
+            double screenHeight = Application.Current.MainPage.Height;
+
+            Animation slideAlarmItemUp = new Animation(v => alarmItem.TranslationY = v, screenHeight, 0);
+            slideAlarmItemUp.Commit(this, "slideAlarmItemUp", 4, 250, Easing.CubicInOut);
+        }
+
+        /// <summary>
+        /// Add a single alarm to the view stack at a position. Does not animate.
+        /// </summary>
+        /// <param name="alarm"></param>
+        /// <param name="position"></param>
+        private void AddSingleAlarm(Alarm alarm, int position)
+        {
+            Grid alarmItem = CreateAlarmView(alarm);
+            AlarmList.Children.Insert(position, alarmItem);
         }
 
         private void PopulateAlarmList()
         {
-            MainPageVM vm = ((MainPageVM)AlarmListView.BindingContext);
             int alarmCount = 0;
             foreach(Alarm alarm in vm.AlarmList)
             {
-                AlarmList.Children.Add(CreateAlarmView(alarm, alarmCount));
+                AlarmList.Children.Add(CreateAlarmView(alarm));
                 alarmCount++;
             }
         }
 
-        private Grid CreateAlarmView(Alarm alarm, int alarmCount)
+        private MenuAlarmListItemView CreateAlarmView(Alarm alarm)
         {
-            MainPageVM vm = ((MainPageVM)AlarmListView.BindingContext);
+            MenuAlarmListItemView alarmItem = new MenuAlarmListItemView(alarm, AlarmList.Children.Count);
 
-            Grid alarmItem = new Grid();
-            alarmItem.Children.Add(CreateAlarmInfo(alarm, alarmCount));
-            alarmItem.Children.Add(CreateSelectButton(vm, alarm));
-            alarmItem.Children.Add(CreateAlarmSwitch(alarm));
+            alarmItem.SelectButtonClicked += AlarmItem_SelectButtonClicked;
+            alarmItem.SwitchToggled += AlarmItem_SwitchToggled;
 
             return alarmItem;
         }
 
-        private Button CreateQRButton(Alarm alarm)
+        private void AlarmItem_SwitchToggled(Alarm alarm, bool toggled)
         {
-            Button button = new Button()
-            {
-                ImageSource = "QrCodeIcon.png",
-                WidthRequest = 25,
-                HeightRequest = 25,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(0),
-            };
-            return button;
+            vm.UpdateAlarmToggle(alarm, toggled);
+        }
+
+        private void AlarmItem_SelectButtonClicked(Alarm alarm)
+        {
+            vm.AlarmItemSelected(alarm);
+
+            OpenAlarm();
         }
 
         private void ShrinkAlarmListFrame()
@@ -81,7 +332,6 @@ namespace QRCodeAlarmClock
             FlashMainView();
             GrowAlarmListFrame();
         }
-
 
         private void FlashMainView()
         {
@@ -119,122 +369,13 @@ namespace QRCodeAlarmClock
 
         private void AlarmViewClosed()
         {
-            if(alarmView != null)
+            if (alarmView != null)
             {
                 MainView.Children.Remove(alarmView);
                 alarmView = null;
-            }       
-        }
-
-        private Switch CreateAlarmSwitch(Alarm alarm)
-        {
-            Switch alarmSwitch = new Switch()
-            {
-                IsToggled = alarm.IsEnabled,
-                Margin = new Thickness(20),
-            };
-            alarmSwitch.VerticalOptions = LayoutOptions.CenterAndExpand;
-            alarmSwitch.HorizontalOptions = LayoutOptions.EndAndExpand;
-            
-            return alarmSwitch;
-        }
-
-        private Grid CreateLeftSideInfo(Alarm alarm)
-        {
-            Grid alarmGridLeft = new Grid()
-            {
-                InputTransparent = true,
-            };
-
-            ColumnDefinitionCollection columnDefinitions = new ColumnDefinitionCollection();
-            columnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            columnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-
-            Grid timeAndQr = new Grid()
-            {
-                Margin = new Thickness(20, 20, 20, 0),
-                ColumnDefinitions = columnDefinitions,
-            };
-            Label alarmTime = new Label()
-            {
-                Text = alarm.TimeString,
-                Style = Application.Current.Resources["title"] as Style,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-            };
-            timeAndQr.Children.Add(alarmTime, 0, 0);
-            if (alarm.QRCode != "" || alarm.QRCode == null)
-                timeAndQr.Children.Add(CreateQRButton(alarm), 1, 0);
-
-            alarmGridLeft.Children.Add(timeAndQr, 0, 0);
-
-            Label alarmName = new Label()
-            {
-                Text = alarm.Name,
-                Style = Application.Current.Resources["alarmNormal"] as Style,
-                Margin = new Thickness(20, 0),
-                VerticalOptions = LayoutOptions.Center,
-            };
-            alarmGridLeft.Children.Add(alarmName, 0, 1);
-            alarmGridLeft.HorizontalOptions = LayoutOptions.StartAndExpand;
-
-            return alarmGridLeft;
-        }
-
-        private StackLayout CreateAlarmInfo(Alarm alarm, int alarmCount)
-        {
-            StackLayout alarmInfo = new StackLayout()
-            {
-                Spacing = 0,
-                BackgroundColor = (Color)Application.Current.Resources["AlarmItemBackground"]
-            };
-
-            if(alarmCount != 0)
-                alarmInfo.Children.Add(CreateSeperatorLine());
-            alarmInfo.Children.Add(CreateLeftSideInfo(alarm));
-
-            return alarmInfo;
-        }
-
-        private Button CreateSelectButton(MainPageVM vm, Alarm alarm)
-        {
-            Button selectButton = new Button()
-            {
-                BackgroundColor = (Color)Application.Current.Resources["CloseToTransparent"],
-                Opacity = 0.1,
-                CornerRadius = 0,
-                Command = vm.AlarmItemSelectedCommand,
-                CommandParameter = alarm,
-            };
-            selectButton.Pressed += SelectButton_Pressed;
-            selectButton.Released += SelectButton_Released;
-
-            return selectButton;
-        }
-
-        private void SelectButton_Released(object sender, EventArgs e)
-        {
-            try
-            {
-                HapticFeedback.Perform(HapticFeedbackType.Click);
             }
-            catch { }
-
-            if (alarmView == null)
-            {
-                alarmView = new EditAlarmView() { BindingContext = MainView.BindingContext };
-                alarmView.Closed += AlarmViewClosed;
-                alarmView.StartedClosing += AlarmViewStartedClosing;
-                MainView.Children.Add(alarmView);
-
-                alarmView.OpenAlarmInfo();
-
-                ShrinkAlarmListFrame();
-            }
-
-            Button b = ((Button)sender);
-            b.Opacity = 0.1;
         }
-
+        
         private void ResetSelectButtons()
         {
             foreach(var child in AlarmList.Children)
@@ -246,7 +387,7 @@ namespace QRCodeAlarmClock
             }
         }
 
-        private void SelectButton_Pressed(object sender, EventArgs e)
+        private void AddAlarm_Pressed(object sender, EventArgs e)
         {
             try
             {
@@ -254,21 +395,22 @@ namespace QRCodeAlarmClock
             }
             catch { }
 
-            Button b = ((Button)sender);
-            b.Opacity = 1;
-            b.FadeTo(0.1, 1000, Easing.CubicIn);
+            OpenAlarm();
         }
 
-        private BoxView CreateSeperatorLine()
+        private void OpenAlarm()
         {
-            BoxView line = new BoxView()
+            if (alarmView == null)
             {
-                HeightRequest = 1,
-                BackgroundColor = (Color)Application.Current.Resources["Grey"],
-                Margin = new Thickness(0),
-            };
+                alarmView = new EditAlarmView() { BindingContext = MainView.BindingContext };
+                alarmView.Closed += AlarmViewClosed;
+                alarmView.StartedClosing += AlarmViewStartedClosing;
+                MainView.Children.Add(alarmView);
 
-            return line;
+                alarmView.OpenAlarmInfo();
+
+                ShrinkAlarmListFrame();
+            }
         }
 
         private SwipeItems CreateSwipeItems()

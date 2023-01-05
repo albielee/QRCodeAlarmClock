@@ -1,5 +1,10 @@
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\QRCodeAlarmClock.iOS.exe
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\QRCodeAlarmClock.iOS.pdb
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.dll
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.pdb
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.Bson.dll
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.Bson.pdb
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Xamarin.CommunityToolkit.dll
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Xamarin.Essentials.dll
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Xamarin.Essentials.pdb
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Xamarin.Forms.Core.dll
@@ -45,11 +50,6 @@ C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAla
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\QRCodeAlarmClock.dll
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\QRCodeAlarmClock.pdb
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.AssemblyReference.cache
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.CoreCompileInputs.cache
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.CopyComplete
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.exe
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.pdb
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\actool\_PartialAppManifest.items
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\actool\_BundleResourceWithLogicalName.items
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\actool\_ProcessedImageAssetsPath.items
@@ -61,7 +61,8 @@ C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAla
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\_ProcessedBundleResourcesPath.items
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\_ProcessedContentPath.items
 C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\device-builds\iphone11.8-15.4.1\optimized\
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.dll
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.pdb
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.Bson.dll
-C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\bin\iPhone\Debug\Newtonsoft.Json.Bson.pdb
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.AssemblyReference.cache
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.CoreCompileInputs.cache
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.csproj.CopyComplete
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.exe
+C:\Users\Alberto Lee\Documents\Repos\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock\QRCodeAlarmClock.iOS\obj\iPhone\Debug\QRCodeAlarmClock.iOS.pdb

@@ -1,4 +1,5 @@
 ﻿using QRCodeAlarmClock.ViewModels;
+using QRCodeAlarmClock.Views.AlarmPropertyViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,13 +46,13 @@ namespace QRCodeAlarmClock.Views
 
         private void CreateInfoView()
         {
-            var x = mainGrid.BindingContext;
             infoView = new EditInfoView() { BindingContext = mainGrid.BindingContext };
             infoView.OpenQR += EditInfoView_OpenQR;
             infoView.OpenName += EditInfoView_OpenName;
             infoView.OpenRepeat += EditInfoView_OpenRepeat;
             infoView.OpenSound += EditInfoView_OpenSound;
             infoView.Closed += Close;
+            infoView.Deleted += Deleted;
 
             AlarmEditingViews.Children.Add(infoView);
         }
@@ -67,6 +68,19 @@ namespace QRCodeAlarmClock.Views
 
                 Animation animFadeIn = new Animation(v => editorViewFrame.Opacity = v, 0, 1);
                 animFadeIn.Commit(this, "FadeIn", 4, 500, Easing.CubicInOut);
+            }
+        }
+
+        public void Deleted()
+        {
+            if (isOpen)
+            {
+                ((MainPageVM)mainGrid.BindingContext).DeleteAlarm();
+
+                StartedClosing.Invoke();
+
+                Animation animFlyOut = new Animation(v => editorViewFrame.TranslationY = v, topOffset, Application.Current.MainPage.Height);
+                animFlyOut.Commit(this, "FlyOut", 4, 500, Easing.CubicInOut, (v, c) => FlyoutEnded());
             }
         }
             

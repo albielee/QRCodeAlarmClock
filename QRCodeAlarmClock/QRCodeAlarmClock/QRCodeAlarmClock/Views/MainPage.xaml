@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:QRCodeAlarmClock.ViewModels"
+             xmlns:views="clr-namespace:QRCodeAlarmClock.Views"
+             xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS" xmlns:local="clr-namespace:QRCodeAlarmClock"
              BackgroundColor="{StaticResource DarkDarkGrey}"
              x:Class="QRCodeAlarmClock.MainPage">
 
@@ -26,25 +28,59 @@
 
                     <Grid>
                         <ScrollView x:Name="scrollView"
-                            Scrolled="scrollView_Scrolled">
-                            <StackLayout x:Name="AlarmList"
-                                         Spacing="0"
-                                Margin="20">
+                            Scrolled="scrollView_Scrolled"
+                                    Margin="0,20">
+                            
+                            <StackLayout Margin="0,0,0,0">
                                 <Label Text=" "
-                                Margin="20"/>
+                                   Margin="40"/>
+                                <StackLayout x:Name="AlarmList"
+                                         Spacing="0"
+                                         Margin="20">
+
+                                </StackLayout>
                             </StackLayout>
+                            
                         </ScrollView>
 
                         <Frame BackgroundColor="{StaticResource Background}"
                         VerticalOptions="Start"
                         CornerRadius="40"
                                Margin="0,0,10,0"
+                               HasShadow="False"
                         x:Name="TitleFrame">
-                            <Label Text="Alarms"
-                            Margin="20,20,20,-20"
-                            Padding="0,40,0,0"
-                            Style="{StaticResource title}"
-                            x:Name="Title"/>
+                            <Grid Margin="20,20,20,-20"
+                                  Padding="0,40,0,0">
+                                <Label Text="Alarms"
+                                        Style="{StaticResource title}"
+                                        x:Name="Title"
+                                       Grid.Column="0"/>
+                                <Grid HorizontalOptions="End"
+                                      VerticalOptions="EndAndExpand"
+                                      Grid.Column="1">
+                                    <BoxView BackgroundColor="{StaticResource Orange}"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             HeightRequest="2"
+                                             CornerRadius="1"
+                                             WidthRequest="25"/>
+                                    <BoxView BackgroundColor="{StaticResource Orange}"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             HeightRequest="2"
+                                             WidthRequest="25"
+                                             CornerRadius="1"
+                                             Rotation="90"/>
+                                    <Button Text="   "
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Pressed="AddAlarm_Pressed"
+                                        Command="{Binding AddAlarmCommand}"/>
+                                </Grid>
+                              
+                            </Grid>
+                           
                         </Frame>
                     </Grid>
                 </StackLayout>
@@ -57,9 +93,6 @@
 
             </Frame>
 
-            <Button Text="Add Alarm"
-                    TextColor="White"
-                    Command="{Binding AddAlarmCommand}"/>
         </Grid>
 
     </ContentPage.Content>

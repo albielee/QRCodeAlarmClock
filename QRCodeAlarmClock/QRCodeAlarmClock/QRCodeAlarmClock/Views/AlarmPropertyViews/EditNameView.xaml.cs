@@ -51,5 +51,16 @@ namespace QRCodeAlarmClock.Views
                 clearButton.IsEnabled = true;
             }
         }
+
+        private void backgroundButton_Pressed(object sender, EventArgs e)
+        {
+            TriggerBackButton = !TriggerBackButton;
+        }
+
+        private void entry_Completed(object sender, EventArgs e)
+        {
+            TriggerBackButton = !TriggerBackButton;
+        }
+
     }
 }

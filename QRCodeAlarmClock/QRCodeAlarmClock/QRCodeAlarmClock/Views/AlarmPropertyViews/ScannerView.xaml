@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm="clr-namespace:QRCodeAlarmClock.ViewModels" xmlns:menuitemviews="clr-namespace:QRCodeAlarmClock.Views.MenuItemViews"
+             x:Class="QRCodeAlarmClock.Views.AlarmPropertyViews.ScannerView">
+  <ContentView.Content>
+        <Grid HeightRequest="1"
+              x:Name="mainGrid"
+              BindingContext="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageVM}}}">
+            <Frame CornerRadius="20"
+                   IsClippedToBounds="True"
+                   Padding="0">
+                <Grid x:Name="scannerGrid">
+                    <extensions:CameraView CameraOptions="Back"
+                                   CaptureMode="Photo"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   x:Name="cameraView"
+                                   MediaCaptured="cameraView_MediaCaptured"/>
+                    <Button BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Pressed="Button_Pressed"/>
+                    <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          BackgroundColor="White"
+                          Opacity="0"
+                          x:Name="flashOverlay"/>
+                    <menuitemviews:TapIconView ButtonPressed="TapIconView_ButtonPressed"/>
+                </Grid>
+            </Frame>
+
+        </Grid>
+  </ContentView.Content>
+</ContentView>

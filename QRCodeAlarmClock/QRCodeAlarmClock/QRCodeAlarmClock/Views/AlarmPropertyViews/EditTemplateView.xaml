@@ -7,8 +7,10 @@
     <ContentView.Resources>
 
         <ControlTemplate x:Key="editTemplate">
-            <Grid BackgroundColor="{StaticResource DarkGrey}">
-                <StackLayout Margin="20,0">
+            <Grid BackgroundColor="{StaticResource DarkGrey}"
+                  VerticalOptions="FillAndExpand">
+                <StackLayout Margin="20,0"
+                             VerticalOptions="FillAndExpand">
                     <Grid>
                         <menuitemviews:OrangeArrowView/>
                         <Button Text="Back"
@@ -21,7 +23,7 @@
                                Style="{StaticResource normal}"/>
                     </Grid>
                     
-                    <ContentPresenter>
+                    <ContentPresenter VerticalOptions="FillAndExpand">
 
                     </ContentPresenter>
                 </StackLayout>

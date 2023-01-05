@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QRCodeAlarmClock.Views.AlarmRingingView">
+  <ContentView.Content>
+        <Grid VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="{StaticResource Red}"
+              x:Name="mainView">
+
+            <Frame BackgroundColor="White"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Opacity="0.2"
+                   CornerRadius="50"
+                   InputTransparent="True"
+                   x:Name="flashFrame"/>
+            <Button Text="Stop Alarm"
+                    TextColor="{StaticResource TextDefault}"
+                    FontSize="Large"
+                    InputTransparent="False"
+                    Pressed="Button_Pressed"
+                    IsEnabled="True"
+                    x:Name="alarmButton"/>
+            <StackLayout
+                x:Name="scanStackView"
+                InputTransparent="True"
+                VerticalOptions="CenterAndExpand"
+                Margin="20,0">
+                <Label x:Name="alarmLabel"
+                       TranslationY="40"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+                
+            </StackLayout>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

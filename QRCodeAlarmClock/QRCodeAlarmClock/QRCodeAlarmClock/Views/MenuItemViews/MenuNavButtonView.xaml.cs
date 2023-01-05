@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,9 +20,11 @@ namespace QRCodeAlarmClock.Views
         bool buttonFocused = false;
 
         Timer _autoUnfocusTimer;
+        Timer _autoUnfocusAfterTapTimer;
 
         public event ButtonPressedHandler ButtonPressed;
         public delegate void ButtonPressedHandler();
+
 
 		public MenuNavButtonView ()
 		{
@@ -30,11 +33,26 @@ namespace QRCodeAlarmClock.Views
 
         private void Button_Pressed(object sender, EventArgs e)
         {
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
+
+
             DisposeTimer();
             CreateTimer();
 
             FocusButton();
             LightUp();
+        }
+
+        private void CreateUnfocusAfterTapTimer()
+        {
+            _autoUnfocusAfterTapTimer = new System.Timers.Timer();
+            _autoUnfocusAfterTapTimer.Elapsed += new ElapsedEventHandler(UnfocusButtonTimer_Elapsed);
+            _autoUnfocusAfterTapTimer.Interval = 500;
+            _autoUnfocusAfterTapTimer.Enabled = true;
         }
 
         private void CreateTimer()
@@ -49,17 +67,11 @@ namespace QRCodeAlarmClock.Views
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                if (_autoUnfocusTimer != null)
-                {
-                    if (buttonFocused)
-                    {
-                        LightOff();
-                    }
-
-                    UnfocusButton();
-                }
+                LightOff();
+                UnfocusButton();
             });
 
+            DisposeAfterTapTimer();
             DisposeTimer();
         }
 
@@ -79,6 +91,16 @@ namespace QRCodeAlarmClock.Views
             button.BackgroundColor = Color.Transparent;
         }
 
+        private void DisposeAfterTapTimer()
+        {
+            if (_autoUnfocusAfterTapTimer != null)
+            {
+                _autoUnfocusAfterTapTimer.Enabled = false;
+                _autoUnfocusAfterTapTimer.Stop();
+                _autoUnfocusAfterTapTimer.Dispose();
+            }
+        }
+
         private void DisposeTimer()
         {
             if (_autoUnfocusTimer != null)
@@ -87,6 +109,7 @@ namespace QRCodeAlarmClock.Views
                 _autoUnfocusTimer.Stop();
                 _autoUnfocusTimer.Dispose();
             }
+            
         }
 
         private void UnfocusButton()
@@ -96,8 +119,17 @@ namespace QRCodeAlarmClock.Views
 
         private void Button_Released(object sender, EventArgs e)
         {
+
             if (buttonFocused)
             {
+                try
+                {
+                    HapticFeedback.Perform(HapticFeedbackType.Click);
+                }
+                catch { }
+
+                CreateUnfocusAfterTapTimer();
+
                 UnfocusButton();
                 ButtonPressed?.Invoke();
             }

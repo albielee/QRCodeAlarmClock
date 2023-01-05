@@ -6,6 +6,6 @@
         <BoxView HorizontalOptions="FillAndExpand"
                             Color="{StaticResource SubtleDarkDarkGrey}"
                             HeightRequest="1"   
-                            Margin="40,0,0,0"/>
+                            Margin="20,0,10,0"/>
    </ContentView.Content>
 </ContentView>

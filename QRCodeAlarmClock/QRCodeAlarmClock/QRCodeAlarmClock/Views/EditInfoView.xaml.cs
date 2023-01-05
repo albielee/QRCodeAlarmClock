@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +17,8 @@ namespace QRCodeAlarmClock.Views
 
         bool isNavButtonPressed = false;
 
+        public event DeletedEventHandler Deleted;
+        public delegate void DeletedEventHandler();
 
         public event ClosedEventHandler Closed;
         public delegate void ClosedEventHandler();
@@ -58,9 +60,20 @@ namespace QRCodeAlarmClock.Views
             OpenQR.Invoke();
         }
 
+        private void DeleteButton_Pressed()
+        {
+            Deleted?.Invoke();
+        }
+
         private void Close_Pressed(object sender, EventArgs e)
         {
             Closed.Invoke();
+
+            try
+            {
+                HapticFeedback.Perform(HapticFeedbackType.Click);
+            }
+            catch { }
         }
     }
 }
